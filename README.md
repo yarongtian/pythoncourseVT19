@@ -1,6 +1,6 @@
 # PythonCourseVT19
 
-Project: Potential transcript
+Project: Prediction of Potential Transcripts
 
 Materials: Script PoTrans.py is located in the directory /code/PoTans.py.
            Test example sequence is the file sequence.fasta.
