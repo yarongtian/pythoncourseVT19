@@ -2,8 +2,10 @@
 The purpose of this project is to find out all possible transcirpts of the DNA sequence you input, which will be transcribed
 by RNA polymerase II (polII). The DNA fragments can be transcibed by RNA polII have several features in common, such as TATA
 box stands for the start, and AATAAA is the terminal signal. Therefore the script could be:
-1. Input the target fasta file or paste DNA sequence 
-   
-2. Find sub-sequence beginning with TATA and ending with AATAAA
-3. Save the sequence name and sub-sequences with start sites and end sites
-4. Save the results in a class called possible transcript
+1. Input the target DNA sequence you want to test
+2. Find sub-sequence beginning with TATA
+3. Store the rest sequence after the TATA 
+4. Count how many times the AATAAA are there in the rest sequence after the TATA
+5. Save the results
+6. Print the results
+
