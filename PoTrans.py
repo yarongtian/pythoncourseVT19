@@ -1,76 +1,66 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#Course: Python programming for life science researchers VT19
-#Project: Potential Transcripts Prediction
-#Author: Yarong Tian
+# Course: Python programming for life science researchers VT19
+# Project: Potential Transcripts Prediction
+# Author: Yarong Tian
 
-#Import the original data
-#sequence=input("Please paste query sequence here:")
-sequence="TATACGTATAGGCTAATAAACCCAATAAA"
+# Import the original data
+sequence=input("Please paste query sequence here: ")
 
-
-#Read the query sequence
+# Read the query sequence
 seq=str(sequence)
 
+# Prepare for printing the head of the results
+ResultHead = ['RESULTS: ','StartPosition', 'NumberOfTranscripts']
 
-ResultHead = ['StartPosition', 'NumberOfTranscripts']
-print(ResultHead)
+# Define the start and end sequences
+start = "TATA"
+end = "AATAAA"
 
-#Function on the pol II promoter
-#def find_TATA(countseq, start):  
-    #SP = countseq.find(start,beg=i,end=len(countseq))
-    #return SP  
+# Build a dictionary
+result = {}
 
-#Count number of possible polyA signal        
-#def count_transcripts(rest_seq, end):
-    #NOTs = rest_seq.count(end)
-    #return NOTs    
-
-#Count of Potential Transcripts       
+# Count Potential Transcripts       
 for i in range(len(seq)):
-    #print(i)
-    start = "TATA"
-    end = "AATAAA"
-    countseq=seq[i:]
-    #if i == 0
+    
+# Find() method is used to find the starting index of the start string(TATA) in the 
+# substring beginning at index(i) and ending at the end of sequence(seq)
     SP = seq.find(start,i,len(seq))
+    
+    # Stop when there is no start string(TATA).
     if SP == -1:
         break
-    rest_seq = seq[SP+4:]
-    NOTs = rest_seq.count(end)
-    Result = [SP, NOTs]
-    print(Result)
     
-    STARTrest = rest_seq.count(start)
-    #print(STARTrest)
-    if STARTrest == 0:
+    # Name the subsequence after the start string(TATA) as rest_seq
+    rest_seq = seq[SP+len(start):]
+    
+    # The inbuilt string count() funtion is used to count how many times the end 
+    # string(AATAAA) exist in the rest_seq
+    NOTs = rest_seq.count(end)
+    
+    # Pair the values in the dictionary result
+    result[SP] = NOTs
+    
+    # When there is no the end string(AATAAA) in the rest_seq, then stop
+    if NOTs == 0:
         break
     
-    
-   # if SP != -1:
-    #    i = i + len(start)
-     #   rest_seq = seq[i:] 
-     #   NOTs = rest_seq.count(end)
-     #   SP = countseq.find(start,i,len(countseq))
-     #   print(rest_seq)
-     #   print(NOTs)
-    #else: 
-    #    break
-  
-    
-    #rest_seq = seq[SP+len(start):]
-    #NOTs = rest_seq.count(end)
-    #print(countseq)
-    #print(SP)
-    #print(NOTs)
-    
-    
-    #Result = [str(i+1), str(SP), str(NOTs)]
-    #countseq = seq[fin]
+# Print the result to screen
+# Print the result heads
+print(ResultHead[0],'\n',ResultHead[1],'\t',ResultHead[2])
 
-#print(Result)
-#Ord += 1
+# Print the result values
+for key in result:
+    print(key, '\t', '\t', result[key])
+    
+
+    
+
+
+
+
+    
         
 
 
